@@ -10,7 +10,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
+    bslib,
     DT,
+    openxlsx,
     purrr,
     readtext,
     shiny,
