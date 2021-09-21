@@ -12,6 +12,11 @@ library(shiny)
 # Define UI for application that draws a histogram
 shinyUI(
     navbarPage("Zoom Interface",
+               theme = bslib::bs_theme(bootswatch = "united", 
+                                       "enable-gradients" = TRUE, "enable-shadows" = TRUE,
+                                       primary = "#2080E9", secondary = "#D5372F",
+                                       font_scale = NULL
+                                       ),    
                zoom_chat_UI("zoom_chat")
                    
 )
