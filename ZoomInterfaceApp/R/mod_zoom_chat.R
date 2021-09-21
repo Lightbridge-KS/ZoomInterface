@@ -8,10 +8,10 @@ library(shiny)
 zoom_chat_UI <- function(id) {
   ns <- NS(id)
 
-    tabPanel("Read Zoom Chat",
+    tabPanel("Convert Zoom Chat",
              h3("About"),
              tags$blockquote(
-               "Convert program Zoom's chat file from .txt to Excel"
+               "Convert program Zoom's chat file from Text to Excel"
              ),
              br(),
              fluidRow(
