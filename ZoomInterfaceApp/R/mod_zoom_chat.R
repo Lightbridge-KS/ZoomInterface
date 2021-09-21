@@ -9,18 +9,40 @@ zoom_chat_UI <- function(id) {
   ns <- NS(id)
 
     tabPanel("Read Zoom Chat",
-             
-             fileInput(
-               ns("file"),
-               NULL,
-               accept = c(".txt"),
-               buttonLabel = "Upload file",
-               placeholder = "choose Zoom's chat .txt"
+             h3("About"),
+             tags$blockquote(
+               "Convert program Zoom's chat file from .txt to Excel"
+             ),
+             br(),
+             fluidRow(
+               column(6,
+                      helpText("Step 1: Upload Zoom's Chat file as ", tags$code(".txt")),
+                      br(),
+                      fileInput(
+                        ns("file"),
+                        NULL,
+                        accept = c(".txt"),
+                        buttonLabel = "Upload file",
+                        placeholder = "choose Zoom's chat .txt"
+                      )
+                      ),
+               column(6,
+                      helpText("Step 2: Download result as ", tags$code(".xlsx")),
+                      br(),
+                      downloadButton(ns("download"), "Download Excel")
+                      )
              ),
              
+            
+             
+             
+
+             hr(),
+             
+             h3("Preview"),
              DT::DTOutput(ns("table")),
              
-             verbatimTextOutput(ns("raw"))
+             #verbatimTextOutput(ns("raw"))
              
     )
     
@@ -35,6 +57,7 @@ zoom_chat_Server <- function(id) {
     id,
     function(input, output, session) {
       
+      ### Read
       chat_df <- reactive({
         
         req(input$file)
@@ -42,6 +65,14 @@ zoom_chat_Server <- function(id) {
         
       })
       
+      ### Get File Name (removed extension)
+      file_name <- reactive({
+        
+        stringr::str_remove(input$file$name,"\\.[^\\.]+$") #remove .xxx (content after last dot)
+      
+        })
+      
+      ### Show Table
       output$table <- DT::renderDT({
         
         chat_df()
@@ -51,10 +82,21 @@ zoom_chat_Server <- function(id) {
       selection = 'none')
       
       
+      ### Download Excel
+      output$download <- downloadHandler(
+        
+        filename = function() {
+          paste0(file_name(), ".xlsx") 
+        },
+        content = function(file) {
+          
+          write_custom.xlsx(list(Chat = chat_df()), file)
+        }
+      )
       
-      output$raw <- renderPrint({
-        chat_df()
-      })
+      # output$raw <- renderPrint({
+      #   file_name()
+      # })
   
   
     }
