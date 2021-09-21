@@ -8,7 +8,7 @@ library(shiny)
 zoom_chat_UI <- function(id) {
   ns <- NS(id)
 
-    tabPanel("Convert Zoom Chat",
+    tabPanel("Zoom Chat Converter",
              h3("About"),
              tags$blockquote(
                "Convert program Zoom's chat file from Text to Excel"
