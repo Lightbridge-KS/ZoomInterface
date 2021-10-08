@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(markdown) 
 
 # Define UI for application that draws a histogram
 shinyUI(
@@ -19,7 +20,7 @@ shinyUI(
                                        ),    
                zoom_chat_UI("zoom_chat"),
                tabPanel("About",
-                        includeMarkdown("about.md")
+                        includeMarkdown("about.md") # Must add library(markdown) 
                         )
                    
 )

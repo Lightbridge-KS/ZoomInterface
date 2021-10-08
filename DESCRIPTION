@@ -13,6 +13,7 @@ Imports:
     bslib,
     dplyr,
     DT,
+    markdown,
     openxlsx,
     purrr,
     readtext,
