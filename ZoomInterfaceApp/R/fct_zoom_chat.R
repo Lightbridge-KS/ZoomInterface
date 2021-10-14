@@ -9,13 +9,15 @@ library(dplyr)
 #' Read Zoom Chat File
 #'
 #' @param file Path to Zoom's chat .txt file(s)
-#'
+#' @param format_time (Logical) if `TRUE` column "Time" will be formatted to period object
 #' @return A tibble 
 #' @export 
-read_zoom_chat <- function(file){
+read_zoom_chat <- function(file,
+                           format_time = FALSE
+){
   
   zoom_chat_raw <- readtext::readtext(file, encoding = "UTF-8")
-  zoom_chat_extract(zoom_chat_raw)
+  zoom_chat_extract(zoom_chat_raw, format_time = format_time)
   
 }
 
@@ -26,11 +28,14 @@ read_zoom_chat <- function(file){
 #' Extract Each Element to Tibble
 #'
 #' @param x A character vector
+#' @param format_time (Logical) if `TRUE` column "Time" will be formatted to period object
 #'
 #' @return A Tibble with columns "Time", "Name", "Content".
 #' If full Zoom Chat format is recognized "Target" is added.
 #' @export
-zoom_chat_extract <- function(x){
+zoom_chat_extract <- function(x, 
+                              format_time = FALSE
+){
   
   time_chr <- zoom_chat_ext_time(x)
   
@@ -50,6 +55,11 @@ zoom_chat_extract <- function(x){
     Name = name_chr,
     Content = contents_chr
   )
+  
+  if(format_time){
+    df1 <- df1 %>% dplyr::mutate(Time = lubridate::hms(Time))
+  }
+  
   if( !is_chat_full(x)) return(df1)
   
   ## Full Zoom Chat add "Target"
