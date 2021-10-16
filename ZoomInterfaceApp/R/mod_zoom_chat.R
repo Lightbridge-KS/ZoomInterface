@@ -38,9 +38,17 @@ zoom_chat_UI <- function(id) {
              
 
              hr(),
-             
+             ### Table
              h3("Preview"),
              DT::DTOutput(ns("table")),
+             
+             ### Word Cloud
+             hr(),
+             h3("Word Cloud"),
+             br(),
+             plotOutput(ns("plot")),
+             download_plot_UI(ns("download_plot"), label = "Download Wordcloud"),
+             hr()
              
              #verbatimTextOutput(ns("raw"))
              
@@ -61,7 +69,8 @@ zoom_chat_Server <- function(id) {
       chat_df <- reactive({
         
         req(input$file)
-        read_zoom_chat(input$file$datapath)
+        readzoom::read_zoom_chat(input$file$datapath)
+        #read_zoom_chat(input$file$datapath)
         
       })
       
@@ -80,6 +89,32 @@ zoom_chat_Server <- function(id) {
       },
       options = list(lengthMenu = c(5,10,20,50), pageLength = 5 ),
       selection = 'none')
+      
+      ### Count Chat Contents
+      word_df <- reactive({
+        
+        count_zoom_chat_contents(chat_df())
+        
+      })
+      
+      wordcloud <- reactive({
+        
+        set.seed(123)
+        plot_wordcloud(word_df())
+        
+      })
+      
+      ### Show Plot
+      
+      output$plot <- renderPlot({
+        
+        wordcloud()
+        
+      }, res = 96)
+      
+      ### Download Plot
+      
+      download_plot_Server("download_plot", wordcloud, filename = "wordcloud-Zoom-Chat.jpg")
       
       
       ### Download Excel
