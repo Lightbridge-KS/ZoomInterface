@@ -17,6 +17,9 @@ Imports:
     openxlsx,
     purrr,
     readtext,
+    readzoom (>= 0.0.0.9000),
     shiny,
     stringr,
     tibble
+Remotes:  
+    Lightbridge-KS
