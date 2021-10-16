@@ -9,6 +9,7 @@
 
 library(shiny)
 library(markdown) 
+library(readzoom)
 
 # Define UI for application that draws a histogram
 shinyUI(
