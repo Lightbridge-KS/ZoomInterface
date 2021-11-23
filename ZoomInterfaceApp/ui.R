@@ -10,6 +10,7 @@
 library(shiny)
 library(markdown) 
 library(readzoom)
+library(ggplot2)
 
 # Define UI for application that draws a histogram
 shinyUI(

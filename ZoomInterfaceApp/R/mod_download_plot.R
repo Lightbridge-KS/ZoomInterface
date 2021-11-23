@@ -26,8 +26,8 @@ download_plot_UI <- function(id, label = "Download Plot", ...) {
 #' @return Nothing 
 download_plot_Server <- function(id, 
                                  plot_obj, 
-                                 filename = "plot.jpg", 
-                                 device = "jpeg") {
+                                 filename = "plot.png", 
+                                 device = "png") {
   moduleServer(
     id,
     function(input, output, session) {

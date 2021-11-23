@@ -1,6 +1,8 @@
 ### Read Zoom Chat .txt to DataFrame
 
 library(shiny)
+library(ggplot2)
+
 
 # UI ----------------------------------------------------------------------
 
@@ -114,7 +116,7 @@ zoom_chat_Server <- function(id) {
       
       ### Download Plot
       
-      download_plot_Server("download_plot", wordcloud, filename = "wordcloud-Zoom-Chat.jpg")
+      download_plot_Server("download_plot", wordcloud, filename = "wordcloud-Zoom-Chat.png")
       
       
       ### Download Excel

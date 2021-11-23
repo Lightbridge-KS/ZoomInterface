@@ -4,6 +4,7 @@
 library(shiny)
 library(markdown) 
 library(readzoom)
+library(ggplot2)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
