@@ -19,6 +19,8 @@ zoom_participants_UI <- function(id) {
              ),
       column(3,
              ### Download
+             helpText("4) Download results as ", tags$code(".xlsx")),
+             br(),
              download_xlsx_UI(ns("download"), "Download Excel")
              )
     ),

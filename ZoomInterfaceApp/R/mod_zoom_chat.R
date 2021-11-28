@@ -11,7 +11,7 @@ zoom_chat_UI <- function(id) {
   ns <- NS(id)
 
     tabPanel("Zoom Chat Converter",
-             h3("About"),
+             h3("Zoom Chat Converter"),
              tags$blockquote(
                "Convert program Zoom's chat file from Text to Excel"
              ),
