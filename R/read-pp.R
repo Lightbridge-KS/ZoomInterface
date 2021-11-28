@@ -26,19 +26,19 @@ id_df_md2 <- read_csv(here(paths_id$md2))
 # Cleaned -----------------------------------------------------------------
 
 
-pp_cal_cleaned <- readzoom::read_participants(here(paths_pp$cal))
+pp_cal_cleaned <- zoomclass::read_participants(here(paths_pp$cal))
 
 
 
 # Class Session -----------------------------------------------------------------
 
 
-pp_cal_session <- readzoom::class_session(pp_cal_cleaned, 
-                                          class_start = "10:00:00", class_end = "12:00:00")
+pp_cal_session <- zoomclass::class_session(pp_cal_cleaned, 
+                                          class_start = "10:00", class_end = "12:00")
 
 # Class Student ID -----------------------------------------------------------------
 
-pp_cal_stuid <- readzoom::class_studentsID(pp_cal_cleaned, 
+pp_cal_stuid <- zoomclass::class_studentsID(pp_cal_cleaned, 
                            id_regex = "[:digit:]{7}",
                            class_start = "10:00:00", class_end = "12:00:00", 
                            late_cutoff = "10:15:00",
@@ -47,4 +47,4 @@ pp_cal_stuid <- readzoom::class_studentsID(pp_cal_cleaned,
 
 # Attribute ---------------------------------------------------------------
 
-readzoom::class_overview(pp_cal_stuid)
+zoomclass::class_overview(pp_cal_stuid)
