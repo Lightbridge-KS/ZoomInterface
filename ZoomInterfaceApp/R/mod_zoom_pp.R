@@ -47,6 +47,26 @@ zoom_participants_UI <- function(id) {
     
     ### Table
     h3("Students Summary"),
+    helpText("Students summary table provides time information of each students ID (7 digits). 
+             If ID file is uploaded, It will be fully joined with Students summary by 'ID' column."),
+    h5("Output Columns:"),
+    tags$ul(
+      tags$li(tags$b("ID:"),  "Student ID (7 digits) extracted from original", tags$code("Name (Original Name)"), "column of the participant CSV file."), 
+      tags$li(tags$b("Name:"), "Student name combination of each ID.
+              If ID file is uploaded, ", tags$code("Name_from_ID"), "is from ID file and ", tags$code("Name_from_Zoom"), " is from participant CSV file."), 
+      tags$li(tags$b("Email:"), "Email combinations of each IDs."),
+      tags$li(tags$b("Session_Count:"), "Show counts of how many session that each students joined or leaved Zoom class."),
+      tags$li(tags$b("Class_Start:"), "Date-Time of Zoom classroom started as provided."),
+      tags$li(tags$b("Class_End:"), "Date-Time of Zoom classroom ended as provided."),
+      tags$li(tags$b("First_Join_Time:"), "First join time of each student's ID."),
+      tags$li(tags$b("Last_Leave_Time:"), "Last leave time of each student's ID."),
+      tags$li(tags$b("Before_Class:"), "Time spent before class started of each student's ID."),
+      tags$li(tags$b("During_Class:"), "Time spent during class (between class started and ended) of each student's ID."),
+      tags$li(tags$b("After_Class:"), "Time spent after class ended of each student's ID."),
+      tags$li(tags$b("Total_Time:"), tags$code("Before_Class"), " + ", tags$code("During_Class"), " + ", tags$code("After_Class")),
+      tags$li(tags$b("Multi_Device:"), tags$code("TRUE"), " if students joined Zoom with multiple devices in any session."),
+      tags$li(tags$b("Late_Time:"), "If provided the 'Late Time Cutoff', ", tags$code("Late_Time")," period is computed by ", tags$code("First_Join_Time"), " - ", tags$code("Late Time Cutoff")),
+    ),
     DT::DTOutput(ns("table_studentID")),
     
     hr(),
