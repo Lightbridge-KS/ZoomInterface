@@ -1,15 +1,11 @@
 About
 ================
 
-<!-- badges: start -->
-
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-
-<!-- badges: end -->
-
 > **A data analysis web application for Zoom’s participants report
 > `.csv` and Zoom’s chat `.txt` file.**
+
+Manual in details:
+[here](https://docs.google.com/document/d/1TpTbP1-q0uwBHK_yKtPJm47vqc8kXaXPvAQGEvIc2MA/edit?usp=sharing)
 
 ------------------------------------------------------------------------
 
