@@ -71,7 +71,7 @@ zoom_chat_Server <- function(id) {
       chat_df <- reactive({
         
         req(input$file)
-        readzoom::read_zoom_chat(input$file$datapath)
+        zoomclass::read_zoom_chat(input$file$datapath)
         #read_zoom_chat(input$file$datapath)
         
       })
