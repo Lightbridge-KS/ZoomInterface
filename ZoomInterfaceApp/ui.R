@@ -20,11 +20,12 @@ shinyUI(
                                        primary = "#2080E9", secondary = "#D5372F",
                                        font_scale = NULL
                                        ),
-               zoom_participants_UI("zoom_pp"),
-               zoom_chat_UI("zoom_chat"),
                tabPanel("About",
                         includeMarkdown("about.md") # Must add library(markdown) 
-                        )
+               ),
+               zoom_participants_UI("zoom_pp"),
+               zoom_chat_UI("zoom_chat")
+               
                    
 )
 )
