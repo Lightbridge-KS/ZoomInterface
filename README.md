@@ -16,6 +16,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 -   The app currently deployed:
     [**here**](https://si-physio-intern.shinyapps.io/zoom_interface)
 
+-   User manual in Thai language can be found:
+    [**here**](https://lightbridge-ks.github.io/ZoomInterface/)
+
 -   Main operating functions are provided by
     [**{zoomclass}**](https://github.com/Lightbridge-KS/zoomclass)
     R-package.
