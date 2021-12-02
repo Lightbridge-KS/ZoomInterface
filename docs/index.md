@@ -1,5 +1,7 @@
 # คู่มือการใช้งาน Zoom Interface App
 
+<br>
+
 > **Web application ช่วยเช็คชื่อนักศึกษา จาก Zoom participant report (`.csv`) และ รวบ Zoom chat file จาก `.txt` เป็น excel**
 
 ------------------------------------------------------------------------
@@ -10,8 +12,8 @@
 
 ### App นี้มีอยู่ 2 menu
 
-1.  Zoom Class Report: สำหรับเช็คชื่อนักศึกษา จากรายชื่อ Zoom participant report (`.csv`)
-2.  Zoom Chat Converter: สำหรับแปลงไฟล์ Zoom chat จาก `.txt` เป็น excel
+1.  **Zoom Class Report:** สำหรับเช็คชื่อนักศึกษา จากรายชื่อ Zoom participant report (`.csv`)
+2.  **Zoom Chat Converter:** สำหรับแปลงไฟล์ Zoom chat จาก `.txt` เป็น excel
 
 <img src="images/navbar.png" width="512"/>
 
@@ -21,14 +23,14 @@
 
 ### วิธีใช้
 
-1.  **Upload Zoom participant report file** `.csv`
+1.  **Upload Zoom Participant Report** `.csv`
 2.  **Choose Time:** Class Start Time, Class End Time, Late Cutoff
 3.  **Upload File ID:** ที่มี column `Name` เป็นรายชื่อนักศึกษา และ `ID` เป็นรหัสนักศึกษา 7 หลัก
 4.  **Results:** สามารถดูผลลัพท์จากตารางที่แสดงใน App และ Download ผลเป็น Excel ได้
 
 ------------------------------------------------------------------------
 
-## 1. Upload ไฟล์ Zoom Participant Report
+## 1. Upload Zoom Participant Report
 
 <img src="images/upload-pp.png" title="Botton - Upload participants file" width="358"/>
 
