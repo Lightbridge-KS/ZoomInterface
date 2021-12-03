@@ -1,3 +1,22 @@
+
+
+# Get Zoom Class Meta for Display -----------------------------------------
+
+
+#' Get Class Overview Attribute for Display in Excel
+#'
+#' @param zoom_class object of class `zoom_class`
+#'
+#' @return a data.frame
+#' 
+get_class_meta_disp <- function(zoom_class) {
+  
+  zoomclass::class_overview(zoom_class) %>%
+    setNames(c("Class Start", "Class End", "Late Time Cutoff")) %>%
+    tibble::enframe("Setting", "Time")
+  
+}
+
 # Regex in names ----------------------------------------------------------
 
 
