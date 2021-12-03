@@ -24,9 +24,6 @@ write_custom.xlsx <- function(x, filename){
   
 }
 
-
-
-
 # UI: Download botton -----------------------------------------------------
 
 
