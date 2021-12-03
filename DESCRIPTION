@@ -13,6 +13,7 @@ Imports:
     bslib,
     dplyr,
     DT,
+    lbdoc (>= 0.0.0.9000),
     markdown,
     openxlsx,
     purrr,
@@ -22,4 +23,5 @@ Imports:
     tibble,
     zoomclass (>= 0.0.0.9000)
 Remotes:  
+    Lightbridge-KS,
     Lightbridge-KS
