@@ -21,7 +21,8 @@ zoom_participants_UI <- function(id) {
              ### Download
              helpText("4) Download results as ", tags$code(".xlsx")),
              br(),
-             download_xlsx_UI(ns("download"), "Download Excel")
+             #download_xlsx_UI(ns("download"), "Download Excel")
+             download_xlsx_gV_UI(ns("download"), "Download Excel")
              )
     ),
     
@@ -59,8 +60,8 @@ zoom_participants_UI <- function(id) {
               If ID file is uploaded, ", tags$code("Name_from_ID"), "is from ID file and ", tags$code("Name_from_Zoom"), " is from participant CSV file."), 
       tags$li(tags$b("Email: "), "Email combinations of each IDs."),
       tags$li(tags$b("Session_Count: "), "Show counts of how many session that each students joined or leaved Zoom class."),
-      tags$li(tags$b("Class_Start: "), "Date-Time of Zoom classroom started as provided."),
-      tags$li(tags$b("Class_End: "), "Date-Time of Zoom classroom ended as provided."),
+      #tags$li(tags$b("Class_Start: "), "Date-Time of Zoom classroom started as provided."),
+      #tags$li(tags$b("Class_End: "), "Date-Time of Zoom classroom ended as provided."),
       tags$li(tags$b("First_Join_Time: "), "First join time of each student's ID."),
       tags$li(tags$b("Last_Leave_Time: "), "Last leave time of each student's ID."),
       tags$li(tags$b("Before_Class: "), "Time spent before class started of each student's ID."),
@@ -93,8 +94,8 @@ zoom_participants_UI <- function(id) {
       tags$li(tags$b("Email: "), "from original 'User Email' column."),
       tags$li(tags$b("Session: "), "Indicate active session(s) in Zoom of each students.",
               "Computed by ranking ", tags$code("Join_Time"), " in the grouping variables: ", tags$code("Name (Original Name)"), " and ", tags$code("Email"), "."),
-      tags$li(tags$b("Class_Start: "), "Date-Time of Zoom classroom started as provided."),
-      tags$li(tags$b("Class_End: "), "Date-Time of Zoom classroom ended as provided."),
+      #tags$li(tags$b("Class_Start: "), "Date-Time of Zoom classroom started as provided."),
+      #tags$li(tags$b("Class_End: "), "Date-Time of Zoom classroom ended as provided."),
       tags$li(tags$b("Join_Time: "), "from the original 'Join Time' column."),
       tags$li(tags$b("Leave_Time: "), "from the original 'Leave Time' column."),
       tags$li(tags$b("Before_Class: "), "Time spent before ", tags$code("Class_Start"), "of each session."),
@@ -216,6 +217,7 @@ zoom_participants_Server <- function(id) {
       
       data_studentsID <- reactive({
         
+        
         req(start_time(), end_time())
         zoomclass::class_studentsID(data_cleaned(),
                                     id_regex = "[:digit:]{7}",
@@ -226,8 +228,13 @@ zoom_participants_Server <- function(id) {
                                     period_to = time_unit(),
                                     round_digits = round_digits()
                                     ) %>% 
-          dplyr::select(-Duration_Minutes) # Remove Zoom Artifact
+          dplyr::select(-Duration_Minutes, -Class_Start, -Class_End) # Remove Zoom Artifact & Other cols to Save Spaces
       })
+      
+
+      # Class Meta Information --------------------------------------------------
+
+      class_meta_df <- reactive({ get_class_meta_disp(data_studentsID()) })
       
       # "Class Student ID" join with "ID file" --------------------------------------------------------------------
       
@@ -272,7 +279,7 @@ zoom_participants_Server <- function(id) {
                                  arrange_group = "Name-Email",
                                  period_to = time_unit(),
                                  round_digits = round_digits()) %>% 
-          dplyr::select(-Duration_Minutes) # Remove Zoom Artifact
+          dplyr::select(-Duration_Minutes, -Class_Start, -Class_End) # Remove Zoom Artifact & Other cols to Save Spaces
       })
       
 
@@ -341,12 +348,20 @@ zoom_participants_Server <- function(id) {
       ## Must Construct File Name First
       file_name_download <- reactive({ paste0("ZoomClass_", file_name(), ".xlsx")})
 
-      download_xlsx_Server("download",
-                           list("Student Summary" = data_studentsID_joined(),
-                                "Missing Names" = data_studentsID_joined_missing(),
-                                "Individual Session" = data_session()),
-                           filename_react = file_name_download # Pass w/o ()
-                           )
+      # download_xlsx_Server("download",
+      #                      list("Student Summary" = data_studentsID_joined(),
+      #                           "Missing Names" = data_studentsID_joined_missing(),
+      #                           "Individual Session" = data_session()),
+      #                      filename_react = file_name_download # Pass w/o ()
+      #                      )
+      
+      download_xlsx_gV_Server("download",
+                              `Students Summary` = list(class_meta_df(), 
+                                                        data_studentsID_joined()),
+                              `Missing Names` = list(data_studentsID_joined_missing()),
+                              `Sessions` = list(data_session()),
+                              filename_react = file_name_download
+                              )
       
 
       # Raw ---------------------------------------------------------------------
@@ -360,8 +375,9 @@ zoom_participants_Server <- function(id) {
       #     # data_studentsID_joined()
       #     # data_cleaned = data_cleaned(),
       #     # data_session = data_session()
+      #     class_meta_df()
       #     )
-      #   
+      # 
       # })
   
   
