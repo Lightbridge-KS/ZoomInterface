@@ -102,3 +102,77 @@ Zoom participant report เป็นไฟล์ `.csv` ที่ host สาม
 สามารถดูผลลัพท์จากตารางที่แสดงใน App หรือ Download เป็น Excel file ได้
 
 ![](images/download-excel.png){width="241"}
+
+app นี้จะ extract รหัสนักศึกษา 7 หลักจากชื่อใน Zoom participants report เข้ามา match กับไฟล์รายชื่อนักศึกษา (File ID) โดยจะแสดงผลในตารางดังนี้
+
+------------------------------------------------------------------------
+
+### Students Summary
+
+ตาราง Students Summary จะสรุปข้อมูลเชิงเวลา ของรหัสนักศึกษา 7 หลักของแต่ละคน ผลลัพท์จะเป็นตารางที่มี column ดังนี้
+
+**Output Columns:**
+
+-   **ID:** รหัสนักศึกษา 7 หลัก ที่ถูกดึงออกมาจาก column `Name (Original Name)` ของ Zoom participant report
+
+-   **Name:** รวมรายชื่อทั้งหมดที่พบในแต่ละ `ID` โดยถ้ามี upload ID file ด้วย `Name_from_ID` จะแสดงถึงชื่อจาก file ID และ `Name_from_Zoom` จะแสดงถึงชื่อจาก Zoom participant report
+
+-   **Email:** รวม Email ของแต่ละ `ID`
+
+-   **Session_Count:** แสดงการนับจำนวนครั้งที่นักเรียนแต่ละคน join หรือ leave จากโปรแกรม Zoom
+
+-   **First_Join_Time:** แสดงเวลาที่ join ครั้งแรกสุด ของแต่ละ `ID`
+
+-   **Last_Leave_Time:** แสดงเวลาที่ leave ครั้งสุดท้าย ของแต่ละ `ID`
+
+-   **Before_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **ก่อน** คาบเรียนเริ่ม ของแต่ละ `ID`
+
+-   **During_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **ระหว่าง** คาบเรียน ของแต่ละ `ID`
+
+-   **After_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **หลัง** คาบเรียนจบ ของแต่ละ `ID`
+
+-   **Total_Time:** `Before_Class` + `During_Class` + `After_Class`
+
+-   **Multi_Device:** `TRUE` แสดงว่านักเรียน เข้า Zoom ด้วยอุปกรณ์มากกว่า 1 เครื่อง ใน session ใดๆ (โปรแกรมจะดูว่า ชื่อนักเรียนแต่ละคนมี session ใน zoom ที่ overlap กันหรือไม่ ถ้ามี แสดงว่าใช้อุปกรณ์มากกว่า 1 เข้า zoom)
+
+-   **Late_Time:** ถ้าใส่ "Late Time Cutoff" ใน step 2 ไปแล้ว column **Late_Time** นี้แสดงถึงช่วงเวลาที่มาสาย โดยคำนวณจาก  `First_Join_Time` - `Late Time Cutoff`
+
+------------------------------------------------------------------------
+
+### Missing Names
+
+ตารางนี้จะแสดง rows ที่ไม่พบชื่อนักศึกษาจาก column `Name_from_ID` หรือ `Name_from_Zoom` ซึ่งจะเป็นการแสดงชื่อนักศึกษาที่มี `ID` ไม่ match
+
+------------------------------------------------------------------------
+
+### **Individual Sessions**
+
+ตาราง Individual Sessions นี้จะสรุปข้อมูลเชิงเวลา ของแต่ละ session ใน Zoom ของนักศึกษาแต่ละคน ผลลัพท์จะเป็นตารางที่มี column ดังนี้
+
+**Output Columns:**
+
+-   **Name (Original Name):** จาก column: 'Name (Original Name)' ของ Zoom participant report
+
+-   **Name:** ชื่อที่ปรากฏใน Zoom ของผู้เข้าร่วม
+
+-   **Name_Original:** ชื่อ Original ที่ตั้งขึ้นก่อนเข้า Zoom
+
+-   **Email:** จาก 'User Email' column ของ Zoom participant report
+
+-   **Session:** แสดงถึง active session ใน Zoom ของนักเรียนแต่ละคน โดยเป็นการ rank `Join_Time` ในแต่ละกลุ่มของ `Name (Original Name)` และ `Email`
+
+-   **Join_Time:** จาก 'Join Time' column ของ Zoom participant report
+
+-   **Leave_Time:** จาก 'Leave Time' column ของ Zoom participant report
+
+-   **Before_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **ก่อน** คาบเรียนเริ่ม ในแต่ละ session
+
+-   **During_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **ระหว่าง** คาบเรียน ในแต่ละ session
+
+-   **After_Class:** แสดงช่วงเวลาที่อยู่ใน zoom **หลัง** คาบเรียนจบ ในแต่ละ session
+
+-   **Total_Time:** `Before_Class` + `During_Class` + `After_Class`
+
+-   **Rec_Consent:** จาก 'Recording Consent' column ของ Zoom participant report
+
+-   **Multi_Device:** `TRUE` แสดงว่านักเรียน เข้า Zoom ด้วยอุปกรณ์มากกว่า 1 เครื่อง ในแต่ละ session
