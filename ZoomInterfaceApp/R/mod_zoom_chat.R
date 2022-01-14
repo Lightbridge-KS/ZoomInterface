@@ -10,15 +10,15 @@ library(ggplot2)
 zoom_chat_UI <- function(id) {
   ns <- NS(id)
 
-    tabPanel("Zoom Chat Converter",
-             h3("Zoom Chat Converter"),
+    tabPanel("Zoom Chat Explore",
+             h3("Zoom Chat Explore"),
              tags$blockquote(
-               "Convert program Zoom's chat file from Text to Excel"
+               "Convert program Zoom's chat file from Text to Excel, count messages per participants, and display Word clouds"
              ),
              br(),
              fluidRow(
                column(6,
-                      helpText("Step 1: Upload Zoom's Chat file as ", tags$code(".txt")),
+                      helpText("1) Upload Zoom's Chat file as ", tags$code(".txt")),
                       br(),
                       fileInput(
                         ns("file"),
@@ -26,23 +26,52 @@ zoom_chat_UI <- function(id) {
                         accept = c(".txt"),
                         buttonLabel = "Upload file",
                         placeholder = "choose Zoom's chat .txt"
-                      )
+                      ),
+                      
+                      helpText("2) (Optional)", "Upload ID file that has column \"Name\" for student's names and \"ID\" for student's id numbers."),
+                      br(),
+                      fileInput(ns("file_id"), NULL, accept = c(".csv", ".xls",".xlsx"),buttonLabel = "Upload ID",
+                                placeholder = "choose file .csv or .xlsx"),
+                      select_id_cols_UI(ns("choose_cols")),
+                      
                       ),
                column(6,
-                      helpText("Step 2: Download result as ", tags$code(".xlsx")),
+                      helpText("Download result as ", tags$code(".xlsx")),
                       br(),
                       downloadButton(ns("download"), "Download Excel")
                       )
              ),
              
             
-             
-             
+        
 
              hr(),
-             ### Table
-             h3("Preview"),
+             
+             ### Table: Raw
+             h3("Raw Chat"),
+             br(),
+             h5("Output Columns:"),
+             tags$ul(
+               tags$li(tags$b("Time: "), "Time Stamp from each messages"),
+               tags$li(tags$b("Name: "), "Name of participants"),
+               tags$li(tags$b("Target: "), "Target that each participants messages to"),
+               tags$li(tags$b("Content: "), "Messages of each participants as entered in the chat box"),
+             ),
              DT::DTOutput(ns("table")),
+             
+             hr(),
+             ## Table: Count 
+             h3("Count Chat"),
+             br(),
+             h5("Output Columns:"),
+             tags$ul(
+               tags$li(tags$b("ID: "), "7 consecutive digits extracted from column: ", tags$code("Name")),
+               tags$li(tags$b("Name*: "), "Name of participants"),
+               tags$li(tags$b("Message_Count: "), "Counts of how many times each participants replies"),
+               tags$li(tags$b("Content: "), "Messages of that participants entered in the chat box, each seperated by ", tags$code(" ~ ")),
+              ),
+             
+             DT::DTOutput(ns("table_counted")),
              
              ### Word Cloud
              hr(),
@@ -67,7 +96,11 @@ zoom_chat_Server <- function(id) {
     id,
     function(input, output, session) {
       
-      ### Read
+
+# Zoom Chat ---------------------------------------------------------------
+
+      
+      ### Read Raw
       chat_df <- reactive({
         
         req(input$file)
@@ -83,7 +116,75 @@ zoom_chat_Server <- function(id) {
       
         })
       
-      ### Show Table
+      ### Chat Count
+      chat_counted <- reactive({
+        zoomclass::zoom_chat_count(chat_df(),
+                                   collapse = " ~ ",
+                                   extract_id = TRUE,
+                                   id_regex = "[:digit:]{7}")
+      })
+      
+# Read ID file ------------------------------------------------------------
+      
+      id_df <- reactive({ 
+        
+        req(input$file_id) # Require - code wait until file uploaded
+        read_single(file_name = input$file_id$name,
+                    file_path = input$file_id$datapath) 
+        
+      })
+      
+      
+      # Validate ID file ------------------------------------------------------------
+      
+      is_valid_id <- reactive({
+        
+        id_regex <- c("Name", "ID")
+        all( is_regex_in_names(id_df(), regex = id_regex) )
+        
+      })
+      
+      observeEvent(input$file_id,
+                   shinyFeedback::feedbackWarning(
+                     "file_id",
+                     !is_valid_id(),
+                     "ID file must have column 'Name' and 'ID'"
+                   )
+      )
+      
+      # Select ID column --------------------------------------------------------------------
+      
+      id_df_selected <- select_id_cols_Server("choose_cols", id_df)
+      
+
+# Join ID file ------------------------------------------------------------
+
+      chat_counted_joined <- reactive({
+        
+        # Is ID file is ready (uploaded & valid)
+        is_id_ready <- c( isTruthy(input$file_id) && is_valid_id() )
+        
+        # ID is not ready yet
+        if( !is_id_ready ){
+          
+          chat_counted()
+          
+          # ID is ready
+        }else if( is_id_ready ){
+          
+          join_id(ids = id_df_selected(), df = chat_counted())
+          
+        }
+        
+        
+      })
+      
+      
+
+      # Show Table --------------------------------------------------------------
+
+      
+      ### Show Table: Raw
       output$table <- DT::renderDT({
         
         chat_df()
@@ -91,6 +192,15 @@ zoom_chat_Server <- function(id) {
       },
       options = list(lengthMenu = c(5,10,20,50), pageLength = 5 ),
       selection = 'none')
+      
+      ### Show Table: Count Messages
+      output$table_counted <- DT::renderDT({
+        
+        chat_counted_joined()
+        
+      }, options = list(lengthMenu = c(5,10,20,50), pageLength = 5 ),
+      selection = 'none')
+      
       
       ### Count Chat Contents
       word_df <- reactive({
@@ -127,7 +237,10 @@ zoom_chat_Server <- function(id) {
         },
         content = function(file) {
           
-          write_custom.xlsx(list(Chat = chat_df()), file)
+          write_custom.xlsx(list(
+            Chat_Raw = chat_df(),
+            Chat_Count = chat_counted_joined()
+            ), file)
         }
       )
       

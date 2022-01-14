@@ -14,9 +14,19 @@ User Manual in Thai language:
 -   **Zoom Class Report:** design to analyse student’s time data in Zoom
     classroom from participants report `.csv` file.
 
--   **Zoom Chat Converter:** convert [Zoom’s chat
-    file](https://support.zoom.us/hc/en-us/articles/115004792763-Saving-in-meeting-chat)
-    from `.txt` to `.xlsx`, for easy data manipulation and analysis.
+-   **Zoom Chat Explore:**
+
+    -   Convert [Zoom’s chat
+        file](https://support.zoom.us/hc/en-us/articles/115004792763-Saving-in-meeting-chat)
+        from `.txt` to `.xlsx`, for easy data manipulation and analysis.
+
+    -   Count & aggregate messages for each participants.
+
+    -   Display word cloud
+
+All of these modules has an option to upload “ID file”, a file with
+student name and ID, which can be merged into the analysis using 7
+digits student ID extracted from participants name.
 
 ------------------------------------------------------------------------
 
