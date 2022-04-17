@@ -1,0 +1,21 @@
+project:
+  title: "quarto-doc-test"
+  output-dir: "."
+  render:
+    - index.qmd
+
+
+toc: true
+number-sections: false
+
+format:
+  html:
+    toc: true
+    toc-depth: 2
+  pdf:
+    toc: true
+    include-in-header: "pre-tex/thai-preamble.tex"
+    keep-tex: false
+    linkcolor: Maroon
+
+standalone: false
