@@ -1,5 +1,5 @@
 ---
-title: "Zoom Interface Manual"
+title: "คู่มือการใช้งาน Zoom Interface App"
 author: "Kittipos Sirivongrungson"
 date: "`r Sys.Date()`"
 ---
@@ -8,7 +8,6 @@ date: "`r Sys.Date()`"
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-# คู่มือการใช้งาน Zoom Interface App
 
 <br>
 
