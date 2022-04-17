@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.256">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kittipos Sirivongrungson">
+<meta name="dcterms.date" content="2022-04-17">
+
+<title>Zoom Interface Manual</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#คมอการใชงาน-zoom-interface-app" id="toc-คมอการใชงาน-zoom-interface-app" class="nav-link active" data-scroll-target="#คมอการใชงาน-zoom-interface-app">คู่มือการใช้งาน Zoom Interface App</a></li>
+  <li><a href="#zoom-class-report" id="toc-zoom-class-report" class="nav-link" data-scroll-target="#zoom-class-report">Zoom Class Report</a>
+  <ul class="collapse">
+  <li><a href="#upload-zoom-participant-report" id="toc-upload-zoom-participant-report" class="nav-link" data-scroll-target="#upload-zoom-participant-report">1. Upload Zoom Participant Report</a></li>
+  <li><a href="#choose-time" id="toc-choose-time" class="nav-link" data-scroll-target="#choose-time">2. Choose Time</a></li>
+  <li><a href="#upload-file-id" id="toc-upload-file-id" class="nav-link" data-scroll-target="#upload-file-id">3. Upload File ID</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">4. Results</a></li>
+  </ul></li>
+  <li><a href="#zoom-chat-explore" id="toc-zoom-chat-explore" class="nav-link" data-scroll-target="#zoom-chat-explore">Zoom Chat Explore</a>
+  <ul class="collapse">
+  <li><a href="#upload-zoom-chat-file" id="toc-upload-zoom-chat-file" class="nav-link" data-scroll-target="#upload-zoom-chat-file">1. Upload Zoom Chat file</a></li>
+  <li><a href="#upload-file-id-optional" id="toc-upload-file-id-optional" class="nav-link" data-scroll-target="#upload-file-id-optional">2. Upload File ID (Optional)</a></li>
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">3. Results</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Zoom Interface Manual</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kittipos Sirivongrungson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2022-04-17</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="คมอการใชงาน-zoom-interface-app" class="level1">
+<h1>คู่มือการใช้งาน Zoom Interface App</h1>
+<p><br></p>
+<blockquote class="blockquote">
+<p><strong>Web application วิเคราะห์ Zoom participant report (<code>.csv</code>) และ รวบรวม Zoom chat file จาก <code>.txt</code> เป็น excel</strong></p>
+</blockquote>
+<hr>
+<p><strong>App Link: <a href="https://si-physio-intern.shinyapps.io/zoom_interface/"><code>https://si-physio-intern.shinyapps.io/zoom_interface</code></a></strong></p>
+<hr>
+<section id="app-นมอย-2-menu" class="level3">
+<h3 class="anchored" data-anchor-id="app-นมอย-2-menu">App นี้มีอยู่ 2 menu</h3>
+<ol type="1">
+<li><p><strong>Zoom Class Report:</strong> (ใช้ไฟล์ Zoom participant report (<code>.csv</code>)</p>
+<ol type="1">
+<li><p>เช็คชื่อการเข้าเรียนได้ ว่าใครเข้า/ไม่เข้า</p></li>
+<li><p>คำนวนข้อมูลเชิงเวลาต่างๆ เช่น: เวลาที่แต่ละคนอยู่ใน Zoom / เวลาที่มาสาย / จำนวนครั้งที่เข้า Zoom</p></li>
+</ol></li>
+<li><p><strong>Zoom Chat Explore:</strong></p>
+<ol type="1">
+<li><p>สำหรับแปลงไฟล์ Zoom chat จาก <code>.txt</code> เป็น excel</p></li>
+<li><p>นับจำนวนครั้งในการตอบ / รวบรวมคำตอบ ของแต่ละคน / เช็คชื่อคนที่ตอบได้</p></li>
+<li><p>Word Cloud</p></li>
+</ol></li>
+</ol>
+<p><img src="images/navbar.png" class="img-fluid" width="512"></p>
+<hr>
+</section>
+</section>
+<section id="zoom-class-report" class="level1">
+<h1>Zoom Class Report</h1>
+<section id="วธใช" class="level3">
+<h3 class="anchored" data-anchor-id="วธใช">วิธีใช้</h3>
+<ol type="1">
+<li><strong>Upload Zoom Participant Report</strong> <code>.csv</code></li>
+<li><strong>Choose Time:</strong> Class Start Time, Class End Time, Late Cutoff</li>
+<li><strong>Upload File ID:</strong> ที่มี column <code>Name</code> เป็นรายชื่อนักศึกษา และ <code>ID</code> เป็นรหัสนักศึกษา 7 หลัก</li>
+<li><strong>Results:</strong> สามารถดูผลลัพท์จากตารางที่แสดงใน App และ Download ผลเป็น Excel ได้</li>
+</ol>
+<hr>
+</section>
+<section id="upload-zoom-participant-report" class="level2">
+<h2 class="anchored" data-anchor-id="upload-zoom-participant-report">1. Upload Zoom Participant Report</h2>
+<p><img src="images/upload-pp.png" title="Botton - Upload participants file" class="img-fluid" width="358"></p>
+<p>Zoom participant report เป็นไฟล์ <code>.csv</code> ที่ host สามารถ download มาได้จากโปรแกรม Zoom ซึ่งโดย default แล้ว จะมี column ดังนี้:</p>
+<ul>
+<li><strong>Name (Original Name):</strong> เริ่มต้นด้วยชื่อที่แสดงใน Zoom และชื่อ Original Name ที่ตั้งไว้ก่อนจะเข้า Zoom ในวงเล็บข้างท้าย</li>
+<li><strong>User Email:</strong> เป็น email ที่ผู้เข้าร่วมที่ signed in สำหรับ Zoom account</li>
+<li><strong>Join Time:</strong> เวลาที่ผู้เข้าร่วม join meeting ในแต่ละ session</li>
+<li><strong>Leave Time:</strong> เวลาที่ผู้เข้าร่วม leave meeting ในแต่ละ session</li>
+<li><strong>Duration (Minutes):</strong> คิดจาก <code>Leave Time</code> - <code>Join Time</code> ของแต่ละ session</li>
+<li><strong>Guest:</strong> “Yes” หมายถึง participants; “No” หมายถึง host</li>
+<li><strong>Recording Consent:</strong> “Y” หมายถึงมีการยินยอมให้ record ใน zoom</li>
+</ul>
+<section id="รปตวอยาง-zoom-participant-report-.csv" class="level3">
+<h3 class="anchored" data-anchor-id="รปตวอยาง-zoom-participant-report-.csv">รูปตัวอย่าง Zoom Participant Report <code>.csv</code></h3>
+<p><img src="images/zoom-pp-heroes.png" title="Zoom Participants Report" class="img-fluid"></p>
+<hr>
+</section>
+</section>
+<section id="choose-time" class="level2">
+<h2 class="anchored" data-anchor-id="choose-time">2. Choose Time</h2>
+<p>ใส่ <strong>Class Start Time</strong> เป็น เวลาที่เริ่มคาบเรียน และ <strong>Class End Time</strong> เป็น เวลาที่คาบจบ</p>
+<p><img src="images/choose-time.png" class="img-fluid" width="295"></p>
+<p>หากต้องการคำนวนเวลามาสาย ให้ติ๊กปุ่ม <strong>Add late time ?</strong></p>
+<p>จากนั้นใส่ <strong>Late Time Cutoff</strong> ซึ่งหมายถึง เวลาที่ตัดว่า ถ้านักเรียนมาเข้า Zoom สายกว่าเวลานี้ จะถือว่าสาย และจะมีคำนวนเวลาให้ว่าสายกี่นาทีด้วย</p>
+<p><img src="images/add-late-time.png" class="img-fluid" width="244"></p>
+<p><br></p>
+<p><strong>สรุป</strong> : จากตัวอย่างในรูปด้านบน ตั้งค่าให้ เวลาเริ่ม 10:00 น. เวลาจบ 12:00 น. โดยตัดสายเมื่อนักเรียนเข้า Zoom ครั้งแรก ช้ากว่า 10:15 น. เป็นต้นไป</p>
+<p><br></p>
+<p><strong>Drop down: Choose units of time interval:</strong> สำหรับเลือกว่าให้ผลลัพท์ของช่วงเวลาออกมาในหน่วยใด เช่น Minute, Hour, Second, หรือ Display Text (HMS) คือแสดงเป็นข้อความ</p>
+<p><strong>Significant Digits:</strong> สำหรับเลือกจุดทศนิยมว่ากี่ตำแหน่ง</p>
+<p><img src="images/time-unit.png" class="img-fluid" width="550"></p>
+<hr>
+</section>
+<section id="upload-file-id" class="level2">
+<h2 class="anchored" data-anchor-id="upload-file-id">3. Upload File ID</h2>
+<p><img src="images/upload-id.png" class="img-fluid" width="294"></p>
+<p>ให้ Upload file รายชื่อนักศึกษา (File ID) โดยต้องมี column ที่ตั้งชื่อว่า <code>Name</code> มีข้อมูลชื่อนักศึกษา และ column <code>ID</code> มีข้อมูลรหัสนักศึกษา 7 หลัก</p>
+<hr>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">4. Results</h2>
+<p>สามารถดูผลลัพท์จากตารางที่แสดงใน App หรือ Download เป็น Excel file ได้</p>
+<p><img src="images/download-excel.png" class="img-fluid" width="241"></p>
+<p>app นี้จะ extract รหัสนักศึกษา 7 หลักจากชื่อใน Zoom participants report เข้ามา match กับไฟล์รายชื่อนักศึกษา (File ID) โดยจะแสดงผลในตารางดังนี้</p>
+<hr>
+<section id="students-summary" class="level3">
+<h3 class="anchored" data-anchor-id="students-summary">Students Summary</h3>
+<p>ตาราง Students Summary จะสรุปข้อมูลเชิงเวลา ของรหัสนักศึกษา 7 หลักของแต่ละคน ผลลัพท์จะเป็นตารางที่มี column ดังนี้</p>
+<p><strong>Output Columns:</strong></p>
+<ul>
+<li><p><strong>ID:</strong> รหัสนักศึกษา 7 หลัก ที่ถูกดึงออกมาจาก column <code>Name (Original Name)</code> ของ Zoom participant report</p></li>
+<li><p><strong>Name:</strong> รวมรายชื่อทั้งหมดที่พบในแต่ละ <code>ID</code> โดยถ้ามี upload ID file ด้วย&nbsp;<code>Name_from_ID</code> จะแสดงถึงชื่อจาก file ID และ <code>Name_from_Zoom</code> จะแสดงถึงชื่อจาก Zoom participant report</p></li>
+<li><p><strong>Email:</strong> รวม Email ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>Session_Count:</strong> แสดงการนับจำนวนครั้งที่นักเรียนแต่ละคน join หรือ leave จากโปรแกรม Zoom</p></li>
+<li><p><strong>First_Join_Time:</strong> แสดงเวลาที่ join ครั้งแรกสุด ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>Last_Leave_Time:</strong> แสดงเวลาที่ leave ครั้งสุดท้าย ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>Before_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>ก่อน</strong> คาบเรียนเริ่ม ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>During_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>ระหว่าง</strong> คาบเรียน ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>After_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>หลัง</strong> คาบเรียนจบ ของแต่ละ <code>ID</code></p></li>
+<li><p><strong>Total_Time:</strong> <code>Before_Class</code>&nbsp;+&nbsp;<code>During_Class</code>&nbsp;+&nbsp;<code>After_Class</code></p></li>
+<li><p><strong>Multi_Device:</strong> <code>TRUE</code> แสดงว่านักเรียน เข้า Zoom ด้วยอุปกรณ์มากกว่า 1 เครื่อง ใน session ใดๆ (โปรแกรมจะดูว่า ชื่อนักเรียนแต่ละคนมี session ใน zoom ที่ overlap กันหรือไม่ ถ้ามี แสดงว่าใช้อุปกรณ์มากกว่า 1 เข้า zoom)</p></li>
+<li><p><strong>Late_Time:</strong> ถ้าใส่ “Late Time Cutoff” ใน step 2 ไปแล้ว column <strong>Late_Time</strong> นี้แสดงถึงช่วงเวลาที่มาสาย โดยคำนวณจาก &nbsp;<code>First_Join_Time</code>&nbsp;-&nbsp;<code>Late Time Cutoff</code></p></li>
+</ul>
+<hr>
+</section>
+<section id="missing-names" class="level3">
+<h3 class="anchored" data-anchor-id="missing-names">Missing Names</h3>
+<p>ตารางนี้จะแสดง rows ที่ไม่พบชื่อนักศึกษาจาก column <code>Name_from_ID</code>&nbsp;หรือ&nbsp;<code>Name_from_Zoom</code> ซึ่งจะเป็นการแสดงชื่อนักศึกษาที่มี <code>ID</code> ไม่ match</p>
+<hr>
+</section>
+<section id="individual-sessions" class="level3">
+<h3 class="anchored" data-anchor-id="individual-sessions">Individual Sessions</h3>
+<p>ตาราง Individual Sessions นี้จะสรุปข้อมูลเชิงเวลา ของแต่ละ session ใน Zoom ของนักศึกษาแต่ละคน ผลลัพท์จะเป็นตารางที่มี column ดังนี้</p>
+<p><strong>Output Columns:</strong></p>
+<ul>
+<li><p><strong>Name (Original Name):</strong> จาก column: ‘Name (Original Name)’ ของ Zoom participant report</p></li>
+<li><p><strong>Name:</strong> ชื่อที่ปรากฏใน Zoom ของผู้เข้าร่วม</p></li>
+<li><p><strong>Name_Original:</strong> ชื่อ Original ที่ตั้งขึ้นก่อนเข้า Zoom</p></li>
+<li><p><strong>Email:</strong> จาก ‘User Email’ column ของ Zoom participant report</p></li>
+<li><p><strong>Session:</strong> แสดงถึง active session ใน Zoom ของนักเรียนแต่ละคน โดยเป็นการ rank <code>Join_Time</code> ในแต่ละกลุ่มของ <code>Name (Original Name)</code>&nbsp;และ&nbsp;<code>Email</code></p></li>
+<li><p><strong>Join_Time:</strong> จาก ‘Join Time’ column ของ Zoom participant report</p></li>
+<li><p><strong>Leave_Time:</strong> จาก ‘Leave Time’ column ของ Zoom participant report</p></li>
+<li><p><strong>Before_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>ก่อน</strong> คาบเรียนเริ่ม ในแต่ละ session</p></li>
+<li><p><strong>During_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>ระหว่าง</strong> คาบเรียน ในแต่ละ session</p></li>
+<li><p><strong>After_Class:</strong> แสดงช่วงเวลาที่อยู่ใน zoom <strong>หลัง</strong> คาบเรียนจบ ในแต่ละ session</p></li>
+<li><p><strong>Total_Time:</strong> <code>Before_Class</code>&nbsp;+&nbsp;<code>During_Class</code>&nbsp;+&nbsp;<code>After_Class</code></p></li>
+<li><p><strong>Rec_Consent:</strong> จาก ‘Recording Consent’ column ของ Zoom participant report</p></li>
+<li><p><strong>Multi_Device:</strong> <code>TRUE</code> แสดงว่านักเรียน เข้า Zoom ด้วยอุปกรณ์มากกว่า 1 เครื่อง ในแต่ละ session</p></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="zoom-chat-explore" class="level1">
+<h1>Zoom Chat Explore</h1>
+<section id="วธใช-1" class="level3">
+<h3 class="anchored" data-anchor-id="วธใช-1">วิธีใช้</h3>
+<ol type="1">
+<li><strong>Upload Zoom chat file</strong> นามสกุล <code>.txt</code></li>
+<li>(Optional) <strong>Upload File ID:</strong> ที่มี column <code>Name</code> เป็นรายชื่อนักศึกษา และ <code>ID</code> เป็นรหัสนักศึกษา 7 หลัก</li>
+<li><strong>Results:</strong> สามารถดูผลลัพท์จากตารางที่แสดงใน App และ Download ผลเป็น Excel ได้</li>
+</ol>
+<hr>
+</section>
+<section id="upload-zoom-chat-file" class="level2">
+<h2 class="anchored" data-anchor-id="upload-zoom-chat-file">1. Upload Zoom Chat file</h2>
+<p>Download Zoom chat file นามสกุล <code>.txt</code> จาก Zoom Recording ซึ่งจะมีลักษณะแบบนี้:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/zoom-chat-text.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Zoom Chat file</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Upload ไฟล์ใน App</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/upload-chat.png" class="img-fluid figure-img" width="300"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Upload Zoom Chat file</figcaption><p></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="upload-file-id-optional" class="level2">
+<h2 class="anchored" data-anchor-id="upload-file-id-optional">2. Upload File ID (Optional)</h2>
+<p><img src="images/upload-id.png" class="img-fluid" width="294"></p>
+<p>ให้ Upload file รายชื่อนักศึกษา (File ID) โดยต้องมี column ที่ตั้งชื่อว่า <code>Name</code> มีข้อมูลชื่อนักศึกษา และ column <code>ID</code> มีข้อมูลรหัสนักศึกษา 7 หลัก</p>
+<hr>
+</section>
+<section id="results-1" class="level2">
+<h2 class="anchored" data-anchor-id="results-1">3. Results</h2>
+<section id="raw-chat" class="level3">
+<h3 class="anchored" data-anchor-id="raw-chat">3.1 Raw Chat</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/raw-chat.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Raw Chat</figcaption><p></p>
+</figure>
+</div>
+<p>ตารางนี้จะแปลง content จากไฟล์ <code>.txt</code> เป็นในรูปแบบตาราง โดยมี column ดังนี้:</p>
+<ul>
+<li><p><strong>Time:</strong> เวลาของแต่ละ message</p></li>
+<li><p><strong>Name:</strong> ชื่อผู้ตอบ</p></li>
+<li><p><strong>Target:</strong> เป้าหมาย (ถ้ามี) เช่น “Everyone”</p></li>
+<li><p><strong>Content:</strong> message ที่พิมพ์ใน chat box</p></li>
+</ul>
+</section>
+<section id="count-chat" class="level3">
+<h3 class="anchored" data-anchor-id="count-chat">3.2 Count Chat</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/count-chat.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Count Chat</figcaption><p></p>
+</figure>
+</div>
+<p>ตารางนี้จะสรุปข้อมูลในแต่ละบุคคล โดยมี column ดังนี้:</p>
+<ul>
+<li><p><strong>ID:</strong> รหัสนักศึกษา 7 หลักที่ดึงออกจาก column: <code>Name</code></p></li>
+<li><p><strong>Name*:</strong> ชื่อผู้ตอบ (ถ้ามีการ Upload file ID ด้วย จะแยกเป็น <code>Name_from_ID</code>, <code>Name_from_Zoom</code>)</p></li>
+<li><p><strong>Message_Count:</strong> นับจำนวน message ที่แต่ละคน send</p></li>
+<li><p><strong>Content:</strong> รวม message ทุกครั้งของแต่ละคนใน chat box แยกแต่ละครั้งด้วย <code>~</code></p></li>
+</ul>
+</section>
+<section id="word-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="word-cloud">3.3 Word Cloud</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/wordcloud.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">word cloud</figcaption><p></p>
+</figure>
+</div>
+<p>Word Cloud ของ Content แยกตาม word</p>
+<p>ใน ​app อาจแสดงไม่ค่อยสวยเท่าไรนัก</p>
+<hr>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
